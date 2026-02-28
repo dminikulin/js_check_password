@@ -16,10 +16,18 @@ describe(`Function 'checkPassword':`, () => {
   });
 
   // write more tests here
+  it(`should works with password having non-latin characters`, () => {
+    expect(checkPassword('Пароль1!')).toBe(false);
+  });
 
   it(`should return 'false' for the password
     with less than 8 characters`, () => {
     expect(checkPassword('qwerty')).toBe(false);
+  });
+
+  it(`should return 'false' for the password
+    with less than 8 characters (despite meeting other requirements)`, () => {
+    expect(checkPassword('Str@ng')).toBe(false);
   });
 
   it(`should return 'false' for the password
